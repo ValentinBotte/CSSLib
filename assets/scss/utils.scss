@@ -1,0 +1,292 @@
+/**
+*   VARIABLES ENVIRONNEMENT
+*/
+$col: 12;
+$occurence: 100;
+$pas-layout: 5;
+
+/***************************************************/
+/*********************** MIXIN *********************/
+/***************************************************/
+%col-styles {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+  
+@mixin col-x {
+    @for $i from 1 through $col {
+        .col-#{$i} {
+            @extend %col-styles;
+            -ms-flex: 0 0 $i * 100%/ $col;
+            flex: 0 0 $i * 100%/ $col;
+            max-width: $i * 100% / $col;
+        }
+    }
+}
+
+@mixin margin-x {
+    $i: 0;
+    
+    @while $i <= $occurence {
+        @if($i != 0){
+            .m-#{$i} {
+                margin: $i + 0px;
+            }
+            .mt-#{$i} {
+                margin-top: $i + 0px;
+            }
+            .mb-#{$i} {
+                margin-bottom: $i + 0px;
+            }
+            .mr-#{$i} {
+                margin-right: $i + 0px;
+            }
+            .ml-#{$i} {
+                margin-left: $i + 0px;
+            }
+
+            .m-#{$i}-force {
+                margin: $i + 0px !important;
+            }
+            .mt-#{$i}-force {
+                margin-top: $i + 0px !important;
+            }
+            .mb-#{$i}-force {
+                margin-bottom: $i + 0px !important;
+            }
+            .mr-#{$i}-force {
+                margin-right: $i + 0px !important;
+            }
+            .ml-#{$i}-force {
+                margin-left: $i + 0px !important;
+            }
+        }
+      
+        $i: $i + 5;
+    }
+
+}
+  
+@mixin padding-x {
+    $i: 0;
+    
+    @while $i <= $occurence {
+        @if($i != 0){
+            .p-#{$i} {
+                padding: $i + 0px;
+            }
+            .pt-#{$i} {
+                padding-top: $i + 0px;
+            }
+            .pb-#{$i} {
+                padding-bottom: $i + 0px;
+            }
+            .pr-#{$i} {
+                padding-right: $i + 0px;
+            }
+            .pl-#{$i} {
+                padding-left: $i + 0px;
+            }
+
+            .p-#{$i}-force {
+                padding: $i + 0px !important;
+            }
+            .pt-#{$i}-force {
+                padding-top: $i + 0px !important;
+            }
+            .pb-#{$i}-force {
+                padding-bottom: $i + 0px !important;
+            }
+            .pr-#{$i}-force {
+                padding-right: $i + 0px !important;
+            }
+            .pl-#{$i}-force {
+                padding-left: $i + 0px !important;
+            }
+        }
+      
+        $i: $i + 5;
+    }
+
+}
+
+@mixin width-x {
+    $i: 0;
+    $e: 0;
+
+    @while $i <= 1000 {
+        @if($i != 0){
+            .w-#{$i}px {
+                width: $i + 0px;
+            }
+            .max-w-#{$i}px {
+                max-width: $i + 0px;
+            }
+            .min-w-#{$i}px {
+                min-width: $i + 0px;
+            }
+        }
+      
+        $i: $i + 10;
+    }
+
+    @while $e <= 100 {
+        @if($e != 0){
+            .w-#{$e}p {
+                width: $e + 0%;
+            }
+           
+        }
+      
+        $e: $e + 5;
+    }
+
+}
+
+@mixin height-x {
+    $i: 0;
+    $e: 0;
+
+    @while $i <= 1000 {
+        @if($i != 0){
+            .h-#{$i}px {
+                height: $i + 0px;
+            }
+            .max-h-#{$i}px {
+                max-height: $i + 0px;
+            }
+            .min-h-#{$i}px {
+                min-height: $i + 0px;
+            }
+        }
+      
+        $i: $i + 10;
+    }
+
+    @while $e <= 100 {
+        @if($e != 0){
+            .h-#{$e}p {
+                height: $e + 0%;
+            }
+           
+        }
+      
+        $e: $e + 5;
+    }
+
+}
+
+
+/***************************************************/
+/*********************** GRID **********************/
+/***************************************************/
+@include col-x;
+
+.container-fluid{
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.container{
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+  @media (min-width: 576px) {
+    .container {
+      max-width: 540px;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .container {
+      max-width: 720px;
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .container {
+      max-width: 960px;
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    .container {
+      max-width: 1140px;
+    }
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+/***************************************************/
+/********************** MARGIN *********************/
+/***************************************************/
+.ml-auto{margin-left: auto;}
+.mr-auto{margin-right: auto;}
+.m-auto{margin: auto;}
+
+.m-0-force{margin: 0px!important;}
+.m-0{margin: 0px;}
+.mr-0{margin-right: 0px;}
+.ml-0{margin-left: 0px;}
+.mt-0{margin-top: 0px;}
+.mb-0{margin-bottom: 0px;}
+
+@include margin-x;
+
+/***************************************************/
+/********************** PADDING ********************/
+/***************************************************/
+.pl-auto{padding-left: auto;}
+.pr-auto{padding-right: auto;}
+.p-auto{padding: auto;}
+
+.p-0-force{padding: 0px!important;}
+.p-0{padding: 0px;}
+.pr-0{padding-right: 0px;}
+.pl-0{padding-left: 0px;}
+.pt-0{padding-top: 0px;}
+.pb-0{padding-bottom: 0px;}
+@include padding-x;
+
+
+/***************************************************/
+/********************* POSITION ********************/
+/***************************************************/
+.p-static {position: static;}
+.p-static-force {position: static!important;}
+.p-fixed {position: fixed;}
+.p-fixed-force {position: fixed!important;}
+.p-absolute {position: absolute;}
+.p-absolute-force {position: absolute!important;}
+.p-relative {position: relative;}
+.p-relative-force {position: relative!important;}
+.p-sticky {position: sticky;}
+.p-sticky-force {position: sticky!important;}
+
+/***************************************************/
+/********************* DISPLAY *********************/
+/***************************************************/
+.d-block {display: block;}
+.d-inline-block {display: inline-block;}
+.d-inline {display: inline;}
+.d-flex {display: flex;}
+.d-flex-force {display: flex!important;}
+.d-inline-flex {display: inline-flex;}
+.d-table {display: table;}
+.d-table-row {display: table-row;}
+.d-table-cell {display: table-cell;}
+.d-hidden {display: none;}
+
+/***************************************************/
+/********************** SIZING *********************/
+/***************************************************/
+@include width-x;
+@include height-x;
