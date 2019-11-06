@@ -1,6 +1,7 @@
 /**
 *   VARIABLES ENVIRONNEMENT
 */
+$colors: #FFFFFF, #FEFEFE, #000000;
 $col: 12;
 $occurence: 100;
 $pas-layout: 5;
@@ -8,6 +9,7 @@ $pas-layout: 5;
 /***************************************************/
 /*********************** MIXIN *********************/
 /***************************************************/
+
 %col-styles {
     display: -ms-flexbox;
     display: flex;
@@ -178,6 +180,85 @@ $pas-layout: 5;
 
 }
 
+@mixin position-x {
+    $i: 0;
+    
+    @while $i <= $occurence {
+        @if($i != 0){
+            .top-#{$i} {
+                top: $i + 0px;
+            }
+            .left-#{$i} {
+                left: $i + 0px;
+            }
+            .right-#{$i} {
+                right: $i + 0px;
+            }
+            .bottom-#{$i} {
+                bottom: $i + 0px;
+            }
+        }
+      
+        $i: $i + 5;
+    }
+
+}
+
+@mixin z-x {
+    $i: 0;
+    
+    @while $i <= $occurence {
+        @if($i != 0){
+            .z-#{$i} {
+                z-index: $i + 0px;
+            }
+        }
+      
+        $i: $i + 5;
+    }
+
+}
+
+@mixin fs-x {
+    $i: 0;
+    
+    @while $i <= $occurence {
+        @if($i != 0){
+            .fs-#{$i} {
+                font-size: $i + 0px;
+            }
+        }
+      
+        $i: $i + 2;
+    }
+
+}
+
+@mixin fw-x {
+    $i: 0;
+    
+    @while $i <= 900 {
+        @if($i != 0){
+            .fw-#{$i} {
+                font-weight: $i + 0px;
+            }
+        }
+      
+        $i: $i + 100;
+    }
+
+}
+
+@mixin t-color-x {
+    
+    @each $color in $colors {
+        .t-color-#{str-replace(''+$color, '#', '')} {
+            color: $color;
+        }
+    }
+
+
+}
 
 /***************************************************/
 /*********************** GRID **********************/
@@ -271,6 +352,8 @@ $pas-layout: 5;
 .p-sticky {position: sticky;}
 .p-sticky-force {position: sticky!important;}
 
+@include position-x;
+
 /***************************************************/
 /********************* DISPLAY *********************/
 /***************************************************/
@@ -288,5 +371,68 @@ $pas-layout: 5;
 /***************************************************/
 /********************** SIZING *********************/
 /***************************************************/
+.w-33p{width: 33%;}
 @include width-x;
 @include height-x;
+
+/***************************************************/
+/********************* DISPLAY *********************/
+/***************************************************/
+.d-block {display: block;}
+.d-block-force {display: block!important;}
+.d-inline-block {display: inline-block;}
+.d-inline-block-force {display: inline-block!important;}
+.d-inline {display: inline;}
+.d-inline-force {display: inline!important;}
+.d-flex {display: flex;}
+.d-flex-force {display: flex!important;}
+.d-inline-flex {display: inline-flex;}
+.d-inline-flex-force {display: inline-flex!important;}
+.d-table {display: table;}
+.d-table-row {display: table-row;}
+.d-table-cell {display: table-cell;}
+.d-hidden {display: none;}
+.d-hidden-force {display: none!important;}
+
+/***************************************************/
+/********************* Z-INDEX *********************/
+/***************************************************/
+.z--1 {z-index: -1;}
+.z-0 {z-index: 0;}
+.z-1-force {z-index: 1!important;}
+@include z-x;
+
+/***************************************************/
+/******************** OVERFLOW *********************/
+/***************************************************/
+.overflow-hidden {overflow: hidden;}
+.overflow-auto {overflow: auto;}
+.overflow-visible {overflow: visible;}
+.overflow-hidden-force {overflow: hidden!important;}
+.overflow-auto-force {overflow: auto!important;}
+.overflow-visible-force  {overflow: visible!important;}
+
+/***************************************************/
+/******************* FONT SIZE *********************/
+/***************************************************/
+@include fs-x;
+
+/***************************************************/
+/****************** FONT WEIGHT ********************/
+/***************************************************/
+@include fw-x;
+
+/***************************************************/
+/********************** TEXT  **********************/
+/***************************************************/
+.text-left{text-align: left;}
+.text-center{text-align: center;}
+.text-right{text-align: right;}
+.text-uppercase{text-transform: uppercase;}
+.text-ellipsis{text-overflow: ellipsis;}
+.upper-firstletter::first-letter{text-transform: uppercase;}
+
+/***************************************************/
+/******************* TEXT COLOR  *******************/
+/***************************************************/
+@include t-color-x;
