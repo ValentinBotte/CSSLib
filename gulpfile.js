@@ -1,5 +1,7 @@
 // Requis
 var gulp = require('gulp');
+const minify = require('gulp-minify');
+const rename = require('gulp-rename');
 
 // Include plugins
 var plugins = require('gulp-load-plugins')(); // tous les plugins de package.json
@@ -22,3 +24,14 @@ gulp.task('css', function () {
 gulp.task('watch', function () {
     gulp.watch(source, gulp.series('css'));
 }); 
+
+gulp.task('minify', () => {
+    return gulp.src(source)
+    .pipe(sass.sync().on('error', sass.logError))
+    .pipe(rename({
+      suffix: '.min'
+    }))
+    .pipe(minify())
+    .pipe(gulp.dest(destination));
+})
+  
