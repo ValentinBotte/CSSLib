@@ -508,8 +508,6 @@ $pas-layout: 5;
     .#{$prefix}f-align-items-end{align-items: flex-end;}
 }
 
-
-
 @mixin generate(){
 
     $i: 1;
@@ -539,7 +537,6 @@ $pas-layout: 5;
                 @include bx-solid-xpx-x(nth($prefix-responsive, $i));
                 @include opacity-x(nth($prefix-responsive, $i));
             }
-        
       
         $i: $i + 1;
     }

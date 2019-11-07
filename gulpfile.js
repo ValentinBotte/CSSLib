@@ -1,7 +1,9 @@
 // Requis
 var gulp = require('gulp');
-const minify = require('gulp-minify');
+const minify = require('gulp-clean-css');
 const rename = require('gulp-rename');
+const autoprefixer = require('gulp-autoprefixer');
+var uglify = require('gulp-uglify');
 
 // Include plugins
 var plugins = require('gulp-load-plugins')(); // tous les plugins de package.json
@@ -31,6 +33,7 @@ gulp.task('minify', () => {
     .pipe(rename({
       suffix: '.min'
     }))
+    .pipe(plugins.autoprefixer())
     .pipe(minify())
     .pipe(gulp.dest(destination));
 })
