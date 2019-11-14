@@ -1,13 +1,13 @@
 /**
 *   VARIABLES ENVIRONNEMENT
 */
-$colors: #FFFFFF, #FEFEFE, #000000;
-$fonts: 'Roboto', 'MarkPro';
+$colors: #ffffff,#000000,#0b2374,#6b81c2,#3e425a,#d5003a #ef4b4b,#e4e7ef,#b9bed1,#f0f2f7,#e3e8f0,#dde2ef,#f7f8fa,#a1a6bb,#e1e3e7,#14162d,#3a405b,#f7f8fa,#4be1ab,#acc1f8,#e6e9f1,#f7f8fa,#343e5c;
+$fonts: 'Montserrat';
 $prefix-responsive: '', 'sm-', 'ty-', 'xs-', 'md-', 'lg-';
 $limit-responsive: '10000px', '576px', '768px', '991px', '1080px', '1280px';
 // Ne pas supprimer la premiere valeur responsive
 
-$col: 12;
+$col: 24;
 $occurence: 100;
 $pas-layout: 5;
 
@@ -179,6 +179,7 @@ $pas-layout: 5;
     }
 
     .#{$prefix}w-33p{width: 33%;}
+    .#{$prefix}w-auto{width: auto;}
 
 }
 
@@ -206,11 +207,14 @@ $pas-layout: 5;
         @if($e != 0){
             .#{$prefix}h-#{$e}p {
                 height: $e + 0%;
-            }
-           
+            } 
         }
       
         $e: $e + 5;
+    }
+
+    .#{$prefix}h-auto {
+        height: auto;
     }
 
 }
