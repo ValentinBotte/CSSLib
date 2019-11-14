@@ -261,6 +261,11 @@ $pas-layout: 5;
     .#{$prefix}translate-x{transform: translateX(-50%);}
     .#{$prefix}translate-y{transform: translateY(-50%);}
 
+    .#{$prefix}top-0 {top: 0px;}
+    .#{$prefix}left-0 {left: 0px;}
+    .#{$prefix}right-0 {right: 0px;}
+    .#{$prefix}bottom-0 {bottom: 0px;}
+
 }
 
 @mixin display($prefix) {
